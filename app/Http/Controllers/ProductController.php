@@ -114,11 +114,11 @@ class ProductController extends Controller
     public function filter(Request $request)
     {
         $filter = $request->filterProduct;
-        $search = "";
+        $search = null;
         $products = Product::where('id_kategori', $filter)->paginate(25);
         $categories = Category::all();
 
-        return view('product', compact(['products', 'categories', 'filter']));
+        return view('product', compact(['products', 'categories', 'filter', 'search']));
     }
 
     public function export(Request $request)
